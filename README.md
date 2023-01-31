@@ -1,3 +1,5 @@
 # meme-generator
 
-This Project is show my skill in react for handling form
+live-view site: https://farizge.github.io/meme-generator/
+
+This Project is show my React Skill on handling form
