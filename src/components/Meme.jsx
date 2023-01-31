@@ -9,33 +9,55 @@ const Meme = () => {
   const [allMemes, setAllMemes] = useState([]);
 
   useEffect(() => {
-    async function getMemes() {
+    async function getMemesData() {
       const res = await fetch("https://api.imgflip.com/get_memes");
       const data = await res.json();
       setAllMemes(data.data.memes);
     }
-    getMemes();
+    getMemesData();
   }, []);
+
+  const getMemeImage = () => {
+    const randomNum = Math.floor(Math.random() * allMemes.length);
+    const url = allMemes[randomNum].url;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      memeImg: url,
+    }));
+    console.log(allMemes);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      [name]: value,
+    }));
+  };
 
   return (
     <main>
       <div className="form">
-        <label for="topText">Top Text</label>
         <input
           name="topText"
           type="text"
-          placeholder="Input Top Text"
+          placeholder="Top Text"
+          onChange={handleChange}
+          value={meme.topText}
         />
-        <label for="bottomText">Bottom Text</label>
         <input
           name="bottomText"
           type="text"
-          placeholder="Input Bottom Text"
+          placeholder="Bottom Text"
+          onChange={handleChange}
+          value={meme.bottomText}
         />
-        <button>Get New Meme Image</button>
+        <button onClick={getMemeImage}>Get New Meme Image</button>
       </div>
       <div className="meme-img">
         <img src={meme.memeImg} />
+        <h3 className="top memeText">{meme.topText}</h3>
+        <h3 className="bottom memeText">{meme.bottomText}</h3>
       </div>
     </main>
   );
