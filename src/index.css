@@ -66,6 +66,14 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background: linear-gradient(
+    90deg,
+    #3f3f3f 10%,
+    rgb(88, 88, 88) 100%
+  );
+}
+
 input {
   border: solid rgb(220, 220, 220) 1px;
   border-radius: 5px;
@@ -88,7 +96,7 @@ input {
   transform: translateX(-50%);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold",
     sans-serif;
-  font-size: 2em;
+  font-size: 1.5em;
   text-transform: uppercase;
   color: white;
   letter-spacing: 1.5px;
